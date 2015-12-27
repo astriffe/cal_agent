@@ -1,0 +1,43 @@
+# CalDav Agent
+This tool provides an interface to add Todo or Calendar items to your CalDav server by sending e-mails. For the moment, it has only been tested with owncloud server.
+
+
+Please feel free to fork the project and send me pull requests with your bug fixes or enhancements.
+
+## Usage
+The Cal Agent in its current configuration only runs once per invocation. Hence, to parse your emails on a regular basis, I suggest to 
+
+The correct parsing of the e-mail messages relies on some conventions on how these messages are structured:
+
+### Todo
+Subject prefix: TODO
+E-Mail body: Description
+
+### Calendar
+Subject prefix: CAL
+E-Mail Body:
+	first line: <start> - <end> (mandatory, delimited by a dash)
+	second line*: calendar=<calendarName> (optional)
+
+The delimiter for the can be defined in the imap section of the configuration file using the property 
+All entries will be suffixed with the sender's name and e-mail address.
+
+## Configuration
+The parameters for both IMAP and CalDav server connections can be specified in a separate configuration file. On application start, this file can be specified. This allows for storing the configuration with probably sensitive password data at a protected place. The following configuration properties are available, all except those marked with an asterix are mandatory.
+* *imap_username* 
+* *imap_password*
+* *imap_hostname*
+* *imap_port*
+* *caldav_username*
+* *caldav_password*
+* *caldav_port*
+* *caldav_server_path*: The path on which yourr server provides the caldav interface. For owncloud, this should equal 'remote.php/caldav'
+* *delete_when_read*\*: Decide whether to delete processed messages on the imap server or not. Note: To avoid create multiple entries from one message, only unseen messages are processed and immediately marked 'seen' afterwards.
+* *date_delimiter*\*: The delimiter between start and end time of an event. Please make sure this character does not conflict with the date format.
+* *calendarname*\*: The name of the calendar your tasks are stored in, as well as the events if you do not specify a different calendar name.
+
+# Disclaimer
+Use at own risk, protect against spam and get lucky :)
+	
+
+
