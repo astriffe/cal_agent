@@ -78,7 +78,7 @@ Check IMAP Server for emails and write them to a given CalDav server, either as 
                       help='The file containing the configuration for both IMAP and CalDav Servers. ' +
                            'You can find a sample configuration in the application root.')
 
-    parser.add_option('--profile',
+    parser.add_option('-p', '--profile',
                       dest='profile',
                       default='default',
                       help='The name of your configuration profile')
