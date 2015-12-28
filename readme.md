@@ -27,10 +27,10 @@ E-Mail body: Description
 Subject prefix: 'CAL'
 
 E-Mail Body:
-* first line: <start> - <end> (mandatory, delimited by a dash)
+* first line: `start` ; `end` (mandatory, delimiter set in configuration file)
 * second line*: calendar=<calendarName> (optional)
 
-The delimiter for the can be defined in the imap section of the configuration file using the property 
+The delimiter can be defined in the configuration file using the property `date_delimiter`.
 All entries will be suffixed with the sender's name and e-mail address.
 
 ## Configuration
