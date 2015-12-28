@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import configparser
+import ConfigParser
 import logging
 from optparse import OptionParser
 
@@ -24,7 +24,7 @@ class CalDavAgent:
         caldav = CalDavConnector(self.config)
 
         for todo in todo_items:
-            caldav.add_todo(todo['Subject'], todo.get_payload(), todo['From'])
+            caldav.add_todo(todo['Subject'], str(todo.get_payload()), todo['From'])
 
         for event in calendar_items:
             caldav.add_appointment(event['Subject'], event.get_payload(), event['From'])
@@ -41,7 +41,7 @@ class CalDavAgent:
         return body
 
     def load_configuration(self, configuration_file='./config.ini', profile='default'):
-        configuration = configparser.ConfigParser()
+        configuration = ConfigParser.ConfigParser()
         configuration.read(configuration_file)
 
         for option in ['imap_username', 'imap_password', 'imap_hostname', 'imap_port']:
@@ -70,7 +70,8 @@ class CalDavAgent:
 
 if __name__ == "__main__":
     parser = OptionParser(usage="""\
-Check IMAP Server for emails and write them to a given CalDav server, either as TODOs or as EVENTs. """)
+Check IMAP Server for emails and write them to a given CalDav server, either as TODOs or as EVENTs.
+ For details see https://github.com/astriffe/cal_agent""")
 
     parser.add_option('-c', '--config',
                       dest='config',

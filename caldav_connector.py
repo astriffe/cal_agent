@@ -108,13 +108,14 @@ END:VCALENDAR""")
         principal = client.principal()
         calendars = principal.calendars()
         for cal in calendars:
-            if cal.canonical_url.lower().endswith(self.configuration['calendarname'] + '/'):
+            if cal.canonical_url.lower().endswith(self.configuration['calendarname'].lower() + '/'):
                 calendar = cal
                 break
             calendar = cal
 
-        if self.configuration['calendarname'] not in cal.canonical_url.lower():
-            logging.warning('Could not write to desired calendar "%s", wrote to "%s" instead' % (calendar_name, cal))
+        if self.configuration['calendarname'].lower() not in cal.canonical_url.lower():
+            logging.warning('Could not write to desired calendar "%s", wrote to "%s" instead' %
+                            (self.configuration['calendarname'], cal))
 
         if 'VTODO' in entry:
             calendar.add_todo(entry)

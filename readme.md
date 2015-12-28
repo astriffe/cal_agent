@@ -45,7 +45,7 @@ The parameters for both IMAP and CalDav server connections can be specified in a
 * `caldav_server_path`: The path on which your server provides the caldav interface. For owncloud, this should equal 'remote.php/caldav'
 * `delete_when_read`\*: Decide whether to delete processed messages on the imap server or not. Note: To avoid create multiple entries from one message, only unseen messages are processed and immediately marked 'seen' afterwards.
 * `date_delimiter`\*: The delimiter between start and end time of an event. Please make sure this character does not conflict with the date format.
-* `calendarname`\*: The name of the calendar your tasks are stored in, as well as the events if you do not specify a different calendar name.
+* `calendarname`\*: The name of the calendar your tasks are stored in, as well as the events if you do not specify a different calendar name. The name comparison is case insensitive.
 
 # Disclaimer
 Use at own risk, protect against spam and get lucky :)
